@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locking Around Cy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        header {
+            background: #ff9800;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            background: #03a9f4;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        iframe {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        Locking Around Cy - Unlocking a Better Future!
+    </header>
+    
+    <section>
+        <h2>Our Mission</h2>
+        <p>We advocate for school lockers to enhance student well-being and create safe, organized learning spaces.</p>
+    </section>
+    
+    <section>
+        <h2>Upcoming Workshop Countdown</h2>
+        <p id="countdown"></p>
+    </section>
+    
+    <section>
+        <h2>Get Involved</h2>
+        <a href="#" class="cta-button">Support the Cause</a>
+        <a href="#" class="cta-button">Sign Up Your School</a>
+    </section>
+    
+    <section>
+        <h2>Student Feedback Survey</h2>
+        <p>Does your school need lockers? Let us know by filling out this quick survey.</p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfzLMqv1L0QNW5aa_KH6tulOGWBenPeftbvFrALqEd_TRF5ew/viewform?embedded=true" width="640" height="2399" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </section>
+    
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date("2025-06-15T00:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+            
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "Stay tuned for the next event!";
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
